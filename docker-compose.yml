@@ -1,0 +1,55 @@
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql_sms
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - mysql_data:/var/lib/mysql
+    ports:
+      - 3306:3306
+    networks:
+      - asterisk_net
+  redis:
+    image: redis:alpine
+    restart: always
+    container_name: redis_sms
+    ports:
+      - "6379:6379"
+    networks:
+      - asterisk_net
+  # fusionpbx:
+  #   build:
+  #     context: ./docker/FusionPBX
+  #   container_name: fusionpbx_sms
+  #   networks:
+  #     - asterisk_net
+  #   depends_on:
+  #     - mysql
+  #   privileged: true
+  #   ports:
+  #     - "5060:5060/udp"
+  #     - "8088:8088"
+  #     - "80:80"
+  #     - "443:443"
+  #     - "5432:5432"
+  freeswitch:
+    build:
+      context: ./docker/FreeSWITCH
+    container_name: freeswitch_sms
+    volumes:
+      - ./docker/freeswitch/conf/xml_curl.conf.xml:/etc/freeswitch/autoload_configs/xml_curl.conf.xml
+      - ./docker/freeswitch/conf/modules.conf.xml:/etc/freeswitch/autoload_configs/modules.conf.xml
+      - ./docker/freeswitch/conf/vars.xml:/etc/freeswitch/vars.xml
+    network_mode: host
+    privileged: true
+
+volumes:
+  mysql_data:
+networks:
+  asterisk_net:
+    driver: bridge
