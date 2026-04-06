@@ -111,8 +111,8 @@ sed -i /usr/src/freeswitch-$switch_version/modules.conf -e s:'#formats/mod_shout
 sed -i /usr/src/freeswitch-$switch_version/modules.conf -e s:'#formats/mod_pgsql:formats/mod_pgsql:'
 sed -i /usr/src/freeswitch-$switch_version/modules.conf -e s:'endpoints/mod_verto:#endpoints/mod_verto:'
 sed -i /usr/src/freeswitch-$switch_version/modules.conf -e s:'#xml_int/mod_xml_curl:xml_int/mod_xml_curl:'
-sed -i /usr/src/freeswitch/modules.conf -e s:'#xml_int/mod_xml_rpc:xml_int/mod_xml_rpc:'
-sed -i /usr/src/freeswitch/modules.conf -e s:'#xml_int/mod_xml_scgi:xml_int/mod_xml_scgi:'
+sed -i /usr/src/freeswitch-$switch_version/modules.conf -e s:'#xml_int/mod_xml_rpc:xml_int/mod_xml_rpc:'
+sed -i /usr/src/freeswitch-$switch_version/modules.conf -e s:'#xml_int/mod_xml_scgi:xml_int/mod_xml_scgi:'
 
 #disable module or install dependency libks to compile signalwire
 sed -i /usr/src/freeswitch-$switch_version/modules.conf -e s:'applications/mod_signalwire:#applications/mod_signalwire:'
