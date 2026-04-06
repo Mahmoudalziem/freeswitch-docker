@@ -36,5 +36,5 @@ if [ .$switch_source = .true ]; then
 
 	#systemd service
 	#switch/source-systemd.sh
-	# switch/package-systemd.sh
+	switch/package-systemd.sh
 fi
