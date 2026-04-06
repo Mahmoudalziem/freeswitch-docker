@@ -20,4 +20,4 @@ fi
 apt-get update && apt-get install -y freeswitch-meta-all freeswitch-all-dbg gdb
 
 #make sure that postgresql is started before starting freeswitch
-sed -i /lib/systemd/system/freeswitch.service -e s:'local-fs.target:local-fs.target postgresql.service:'
+# sed -i /lib/systemd/system/freeswitch.service -e s:'local-fs.target:local-fs.target postgresql.service:'

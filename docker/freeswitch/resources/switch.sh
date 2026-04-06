@@ -28,7 +28,7 @@ if [ .$switch_source = .true ]; then
 	switch/source-sounds.sh
 
 	#copy the switch conf files to /etc/freeswitch
-	# switch/conf-copy.sh
+	switch/conf-copy.sh
 
 	#set the file permissions
 	#switch/source-permissions.sh
