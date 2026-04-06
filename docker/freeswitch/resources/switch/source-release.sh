@@ -46,13 +46,13 @@ if [ $(echo "$switch_version" | tr -d '.') -gt 1100 ]; then
 	make install
 	
 	#sofia-sip
-	git clone https://github.com/freeswitch/sofia-sip.git
-	cd sofia-sip
-	./bootstrap.sh
-	./configure --prefix=/usr
-	make -j$(nproc)
-	make install
-	ldconfig
+	# git clone https://github.com/freeswitch/sofia-sip.git
+	# cd sofia-sip
+	# ./bootstrap.sh
+	# ./configure --prefix=/usr
+	# make -j$(nproc)
+	# make install
+	# ldconfig
 
 	# spandsp
 	cd /usr/src
