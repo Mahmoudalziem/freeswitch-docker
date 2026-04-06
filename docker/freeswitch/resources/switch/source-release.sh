@@ -32,7 +32,8 @@ if [ $(echo "$switch_version" | tr -d '.') -gt 1100 ]; then
 
 	# libks C includes
 	export C_INCLUDE_PATH=/usr/include/libks
- 
+	export CFLAGS="-Wno-error"
+
 	# sofia-sip
 	cd /usr/src
 	#git clone https://github.com/freeswitch/sofia-sip.git sofia-sip
@@ -44,6 +45,15 @@ if [ $(echo "$switch_version" | tr -d '.') -gt 1100 ]; then
 	make
 	make install
 	
+	#sofia-sip
+	git clone https://github.com/freeswitch/sofia-sip.git
+	cd sofia-sip
+	./bootstrap.sh
+	./configure --prefix=/usr
+	make -j$(nproc)
+	make install
+	ldconfig
+
 	# spandsp
 	cd /usr/src
 	git clone https://github.com/freeswitch/spandsp.git spandsp
@@ -101,6 +111,8 @@ sed -i /usr/src/freeswitch-$switch_version/modules.conf -e s:'#formats/mod_shout
 sed -i /usr/src/freeswitch-$switch_version/modules.conf -e s:'#formats/mod_pgsql:formats/mod_pgsql:'
 sed -i /usr/src/freeswitch-$switch_version/modules.conf -e s:'endpoints/mod_verto:#endpoints/mod_verto:'
 sed -i /usr/src/freeswitch-$switch_version/modules.conf -e s:'#xml_int/mod_xml_curl:xml_int/mod_xml_curl:'
+sed -i /usr/src/freeswitch/modules.conf -e s:'#xml_int/mod_xml_rpc:xml_int/mod_xml_rpc:'
+sed -i /usr/src/freeswitch/modules.conf -e s:'#xml_int/mod_xml_scgi:xml_int/mod_xml_scgi:'
 
 #disable module or install dependency libks to compile signalwire
 sed -i /usr/src/freeswitch-$switch_version/modules.conf -e s:'applications/mod_signalwire:#applications/mod_signalwire:'
