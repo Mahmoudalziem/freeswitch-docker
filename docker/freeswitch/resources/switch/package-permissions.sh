@@ -1,13 +1,13 @@
-#default permissions
-chown -R www-data:www-data /etc/freeswitch
-chown -R www-data:www-data /var/lib/freeswitch
-chown -R www-data:www-data /usr/share/freeswitch
-chown -R www-data:www-data /var/log/freeswitch
-chown -R www-data:www-data /var/run/freeswitch
-chown -R www-data:www-data /usr/local/freeswitch
-chown -R www-data:www-data /usr/local/freeswitch/run
-mkdir -p /usr/local/freeswitch/run
-chown -R www-data:www-data /usr/local/freeswitch/run
+    #default permissions
+    chown -R www-data:www-data /etc/freeswitch
+    chown -R www-data:www-data /var/lib/freeswitch
+    chown -R www-data:www-data /usr/share/freeswitch
+    chown -R www-data:www-data /var/log/freeswitch
+    chown -R www-data:www-data /var/run/freeswitch
+    chown -R www-data:www-data /usr/local/freeswitch
+    chown -R www-data:www-data /usr/local/freeswitch/run
+    mkdir -p /usr/local/freeswitch/run
+    chown -R www-data:www-data /usr/local/freeswitch/run
 
 
 find /etc/freeswitch -type d -exec chmod 770 {} \;

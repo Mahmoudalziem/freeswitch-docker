@@ -110,7 +110,7 @@ sed -i /usr/src/freeswitch-$switch_version/modules.conf -e s:'endpoints/mod_vert
 
 # prepare the build
 #./configure --prefix=/usr/local/freeswitch --enable-core-pgsql-support --disable-fhs
-./configure CFLAGS="-Wno-error" -C --enable-portable-binary --disable-dependency-tracking \
+./configure CFLAGS="-Wno-error" --sysconfdir=/etc -C --enable-portable-binary --disable-dependency-tracking \
 --prefix=/usr --localstatedir=/var --sysconfdir=/etc \
 --with-openssl
 
