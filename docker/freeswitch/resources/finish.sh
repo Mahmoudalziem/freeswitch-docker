@@ -29,11 +29,11 @@ find /usr/share/freeswitch -type f -exec chmod 664 {} \;
 sed -i 's/value="::"/value="127.0.0.1"/g' /etc/freeswitch/autoload_configs/event_socket.conf.xml
 
 #restart services
-# systemctl daemon-reload
+systemctl daemon-reload
 # systemctl mask wpa_supplicant.service
 # systemctl stop wpa_supplicant.service
 # systemctl enable fail2ban
 # systemctl enable ntpd
-# systemctl enable freeswitch
-# systemctl daemon-reload
-# systemctl restart freeswitch
+systemctl enable freeswitch
+systemctl daemon-reload
+systemctl restart freeswitch

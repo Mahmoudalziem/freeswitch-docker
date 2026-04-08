@@ -33,26 +33,16 @@ if [ $(echo "$switch_version" | tr -d '.') -gt 1100 ]; then
 	# libks C includes
 	export C_INCLUDE_PATH=/usr/include/libks
 	export CFLAGS="-Wno-error"
-
-	# sofia-sip
+	
+	#sofia-sip
 	cd /usr/src
-	#git clone https://github.com/freeswitch/sofia-sip.git sofia-sip
-	wget https://github.com/freeswitch/sofia-sip/archive/refs/tags/v$sofia_version.zip
-	unzip v$sofia_version.zip
-	cd sofia-sip-$sofia_version
+	git clone https://github.com/freeswitch/sofia-sip.git
+	cd sofia-sip
 	sh autogen.sh
 	./configure
 	make
 	make install
-	
-	#sofia-sip
-	# git clone https://github.com/freeswitch/sofia-sip.git
-	# cd sofia-sip
-	# ./bootstrap.sh
-	# ./configure --prefix=/usr
-	# make -j$(nproc)
-	# make install
-	# ldconfig
+	ldconfig
 
 	# spandsp
 	cd /usr/src
@@ -120,9 +110,9 @@ sed -i /usr/src/freeswitch-$switch_version/modules.conf -e s:'xml_int/mod_xml_sc
 
 # prepare the build
 #./configure --prefix=/usr/local/freeswitch --enable-core-pgsql-support --disable-fhs
-./configure -C --enable-portable-binary --disable-dependency-tracking \
+./configure CFLAGS="-Wno-error" -C --enable-portable-binary --disable-dependency-tracking \
 --prefix=/usr --localstatedir=/var --sysconfdir=/etc \
---with-openssl --enable-core-pgsql-support
+--with-openssl
 
 # compile and install
 make
