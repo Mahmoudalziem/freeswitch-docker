@@ -26,6 +26,8 @@ find /usr/share/freeswitch -type f -exec chmod 664 {} \;
 # sed -i /etc/freeswitch/autoload_configs/xml_cdr.conf.xml -e s:"{v_project_path}::"
 # sed -i /etc/freeswitch/autoload_configs/xml_cdr.conf.xml -e s:"{v_user}:$xml_cdr_username:"
 # sed -i /etc/freeswitch/autoload_configs/xml_cdr.conf.xml -e s:"{v_pass}:$xml_cdr_password:"
+sed -i 's|<load module="mod_av"/>|<!-- <load module="mod_av"/> -->|' /etc/freeswitch/autoload_configs/modules.conf.xml
+sed -i 's|<load module="mod_signalwire"/>|<!-- <load module="mod_signalwire"/> -->|' /etc/freeswitch/autoload_configs/modules.conf.xml
 sed -i 's/value="::"/value="127.0.0.1"/g' /etc/freeswitch/autoload_configs/event_socket.conf.xml
 
 #restart services
