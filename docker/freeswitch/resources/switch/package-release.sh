@@ -25,7 +25,6 @@ apt-get install -y libyuv-dev
 mkdir -p /usr/share/freeswitch/sounds/temp
 mv /usr/share/freeswitch/sounds/music/*000 /usr/share/freeswitch/sounds/temp
 mv /usr/share/freeswitch/sounds/music/default/*000 /usr/share/freeswitch/sounds/temp
-apt-get remove -y freeswitch-music-default
 mkdir -p /usr/share/freeswitch/sounds/music/default
 mv /usr/share/freeswitch/sounds/temp/* /usr/share/freeswitch/sounds/music/default
 rm -R /usr/share/freeswitch/sounds/temp

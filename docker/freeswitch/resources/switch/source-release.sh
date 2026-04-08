@@ -105,18 +105,18 @@ fi
 # enable required modules
 sed -i /usr/src/freeswitch-$switch_version/modules.conf -e s:'#applications/mod_callcenter:applications/mod_callcenter:'
 sed -i /usr/src/freeswitch-$switch_version/modules.conf -e s:'#applications/mod_cidlookup:applications/mod_cidlookup:'
-sed -i /usr/src/freeswitch-$switch_version/modules.conf -e s:'#applications/mod_memcache:applications/mod_memcache:'
+# sed -i /usr/src/freeswitch-$switch_version/modules.conf -e s:'#applications/mod_memcache:applications/mod_memcache:'
 sed -i /usr/src/freeswitch-$switch_version/modules.conf -e s:'#applications/mod_curl:applications/mod_curl:'
 sed -i /usr/src/freeswitch-$switch_version/modules.conf -e s:'#formats/mod_shout:formats/mod_shout:'
 sed -i /usr/src/freeswitch-$switch_version/modules.conf -e s:'#formats/mod_pgsql:formats/mod_pgsql:'
 sed -i /usr/src/freeswitch-$switch_version/modules.conf -e s:'endpoints/mod_verto:#endpoints/mod_verto:'
 sed -i /usr/src/freeswitch-$switch_version/modules.conf -e s:'#xml_int/mod_xml_curl:xml_int/mod_xml_curl:'
-sed -i /usr/src/freeswitch-$switch_version/modules.conf -e s:'#xml_int/mod_xml_rpc:xml_int/mod_xml_rpc:'
-sed -i /usr/src/freeswitch-$switch_version/modules.conf -e s:'#xml_int/mod_xml_scgi:xml_int/mod_xml_scgi:'
 
 #disable module or install dependency libks to compile signalwire
 sed -i /usr/src/freeswitch-$switch_version/modules.conf -e s:'applications/mod_signalwire:#applications/mod_signalwire:'
 sed -i /usr/src/freeswitch-$switch_version/modules.conf -e s:'applications/mod_av:#applications/mod_av:'
+sed -i /usr/src/freeswitch-$switch_version/modules.conf -e s:'xml_int/mod_xml_rpc:#xml_int/mod_xml_rpc:'
+sed -i /usr/src/freeswitch-$switch_version/modules.conf -e s:'xml_int/mod_xml_scgi:#xml_int/mod_xml_scgi:'
 
 # prepare the build
 #./configure --prefix=/usr/local/freeswitch --enable-core-pgsql-support --disable-fhs
